@@ -1,0 +1,110 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <title>
+        Riverbed Variation - Unsteady
+    </title>
+</head>
+
+<body>
+
+    <div id="chartDiv">
+        <canvas id="chart" width="1400" height="600" style="border:1px solid">
+        </canvas>
+    </div>
+    <div>
+        <div>
+            <label for="z0">Z0 (m)</label>
+            <input type="range" min=1 max=10000 value=50 class="slider" id="z0"
+                oninput='document.getElementById("z0Val").innerHTML=this.value'>
+            <label id="z0Val">50</label>
+        </div>
+        <div>
+            <label for="discharge">Discharge (cumecs)</label>
+            <input type="range" min=0 max=100 value=14  class="slider" id="discharge"
+                oninput='document.getElementById("dischargeVal").innerHTML=this.value'>
+            <label id="dischargeVal">14</label>
+        </div>
+        <div>
+            <label for="width">Width (m)</label>
+            <input type="range" min=1 max=100 value=23 class="slider" id="width"
+                oninput='document.getElementById("widthVal").innerHTML=this.value'>
+            <label id="widthVal">23</label>
+        </div>
+        <div>
+            <label for="manningsn">Manning's n</label>
+            <input type="range" min=0.0001 max=0.1 value=0.03 step=0.001 class="slider" id="manningsn"
+                oninput='document.getElementById("manningsnVal").innerHTML=this.value'>
+            <label id="manningsnVal">0.03</label>
+        </div>
+        <div>
+            <label for="porosity">Porosity</label>
+            <input type="range" min=0 max=1 value=0.4 step=0.1 class="slider" id="porosity"
+                oninput='document.getElementById("porosityVal").innerHTML=this.value'>
+            <label id="porosityVal">0.4</label>
+        </div>
+        <div>
+            <label for="a">a</label>
+            <input type="range" min=0.0001 max=0.1 value=0.0015 step=0.0001 class="slider" id="a"
+                oninput='document.getElementById("aVal").innerHTML=this.value'>
+            <label id="aVal">0.0015</label>
+        </div>
+        <div>
+            <label for="b">b</label>
+            <input type="range" min=1 max=10 value=5 class="slider" id="b"
+                oninput='document.getElementById("bVal").innerHTML=this.value'>
+            <label id="bVal">5</label>
+        </div>
+
+        <div>
+            <label for="reach">Reachlength (m)</label>
+            <input type="range" min=0 max=10000 value=300 class="slider" id="reach" step=10
+                oninput='document.getElementById("reachVal").innerHTML=this.value'>
+            <label id="reachVal">300</label>
+        </div>
+        <div>
+            <label for="delX">delX (m)</label>
+            <input type="range" min=1 max=100 value=30 class="slider" id="delX"
+                oninput='document.getElementById("delXVal").innerHTML=this.value'>
+            <label id="delXVal">30</label>
+        </div>
+        <div>
+            <label for="maxT">Simulation time (s)</label>
+            <input type="range" min=1 max=10000 value=4000 class="slider" id="maxT"
+                oninput='document.getElementById("maxTVal").innerHTML=this.value'>
+            <label id="maxTVal">4000</label>
+        </div>
+        <div>
+            <label for="delT">delT (s)</label>
+            <input type="range" min=1 max=1000 value=3 class="slider" id="delT"
+                oninput='document.getElementById("delTVal").innerHTML=this.value'>
+            <label id="delTVal">3</label>
+        </div>
+        <div>
+            <label for="bedslope">Bed slope</label>
+            <input type="range" min=0 max=0.5 value=0.00225 step=0.00001 class="slider" id="bedslope"
+                oninput='document.getElementById("bedslopeVal").innerHTML=this.value'>
+            <label id="bedslopeVal">0.00225</label>
+        </div>
+        <div>
+            <label for="delayMs">Delay ms</label>
+            <input type="range" min=0 max=5000 value=0 class="slider" id="delayMs"
+                oninput='document.getElementById("delayMsVal").innerHTML=this.value'>
+            <label id="delayMsVal">0</label>
+        </div>
+        <div>
+            <label for="qsInjected">Injected multiple of normal sediment discharge</label>
+            <input type="range" min=0 max=5 value=2 step=0.1 class="slider" id="qsInjected"
+                oninput='document.getElementById("qsInjectedVal").innerHTML=this.value'>
+            <label id="qsInjectedVal">2</label>
+        </div>
+        <div>
+            <input type="button" value="Calculate" id="calculate" onClick="updateGraph()">
+        </div>
+    </div>
+
+    <script src="code.js"></script>
+</body>
+
+</html>
